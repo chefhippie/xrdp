@@ -21,6 +21,16 @@ default["xrdp"]["packages"] = %w(
   xrdp
 )
 
+default["xrdp"]["service_name"] = "xrdp"
+default["xrdp"]["service_options"] = ""
+default["xrdp"]["sesman_options"] = ""
+
+default["xrdp"]["sysconfig_file"] = value_for_platform_family(
+  "debian" => "/etc/default/xrdp",
+  "ubuntu" => "/etc/default/xrdp",
+  "suse" => "/etc/sysconfig/xrdp"
+)
+
 default["xrdp"]["zypper"]["alias"] = "x11-remotedesktop"
 default["xrdp"]["zypper"]["title"] = "X11 RemoteDesktop"
 default["xrdp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_#{node["platform_version"]}/"

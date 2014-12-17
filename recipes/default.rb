@@ -35,3 +35,25 @@ node["xrdp"]["packages"].each do |name|
     action :install
   end
 end
+
+template node["xrdp"]["sysconfig_file"] do
+  source "sysconfig.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+
+  variables(
+    node["xrdp"]
+  )
+
+  notifies :restart, "service[xrdp]"
+
+  not_if do
+    node["xrdp"]["sysconfig_file"].empty?
+  end
+end
+
+service "xrdp" do
+  service_name node["xrdp"]["service_name"]
+  action [:enable, :start]
+end

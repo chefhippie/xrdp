@@ -53,6 +53,18 @@ template node["xrdp"]["sysconfig_file"] do
   end
 end
 
+execute "xrdp_keygen" do
+  command "xrdp-keygen #{node["xrdp"]["keygen_path"]}"
+
+  not_if do
+    if node["xrdp"]["keygen_path"] == "auto"
+      ::File.exists? "/etc/xrdp/rsakeys.ini"
+    else
+      ::File.exists? node["xrdp"]["keygen_path"]
+    end
+  end
+end
+
 service "xrdp" do
   service_name node["xrdp"]["service_name"]
   action [:enable, :start]

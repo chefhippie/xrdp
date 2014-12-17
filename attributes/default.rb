@@ -22,6 +22,7 @@ default["xrdp"]["packages"] = %w(
   freerdp
 )
 
+default["xrdp"]["keygen_path"] = "auto"
 default["xrdp"]["service_name"] = "xrdp"
 default["xrdp"]["service_options"] = ""
 default["xrdp"]["sesman_options"] = ""

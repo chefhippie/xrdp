@@ -19,6 +19,7 @@
 
 default["xrdp"]["packages"] = %w(
   xrdp
+  freerdp
 )
 
 default["xrdp"]["service_name"] = "xrdp"

@@ -27,6 +27,10 @@ when "suse"
     title node["xrdp"]["zypper"]["title"]
 
     action :add
+
+    only_if do
+      node["xrdp"]["zypper"]["enabled"]
+    end
   end
 end
 

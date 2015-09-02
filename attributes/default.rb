@@ -35,5 +35,5 @@ default["xrdp"]["sysconfig_file"] = value_for_platform_family(
 default["xrdp"]["zypper"]["enabled"] = true
 default["xrdp"]["zypper"]["alias"] = "x11-remotedesktop"
 default["xrdp"]["zypper"]["title"] = "X11 RemoteDesktop"
-default["xrdp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_#{node["platform_version"]}/"
+default["xrdp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_#{node["platform_version"].to_i.to_s == node["platform_version"] ? "Factory" : node["platform_version"]}/"
 default["xrdp"]["zypper"]["key"] = "#{node["xrdp"]["zypper"]["repo"]}repodata/repomd.xml.key"
